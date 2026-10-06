@@ -23,7 +23,9 @@ obj/
 # Generated Android packages
 *.apk
 *.aab
+*.zip
 !downloads/QaziCalculator-debug.apk
+!downloads/AdenalinCalculator-Windows-x64.zip
 
 # OS-generated files
 .DS_Store
