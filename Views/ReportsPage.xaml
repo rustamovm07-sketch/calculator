@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QaziCalculator.Views.ReportsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:QaziCalculator.Views"
+    Title="Hisobotlar"
+    Background="{AppThemeBinding Light={StaticResource PageBackgroundLightBrush}, Dark={StaticResource PageBackgroundDarkBrush}}"
+    xmlns:sh="clr-namespace:Sharpnado.MaterialFrame;assembly=Maui.MaterialFrame">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <views:PageNavigationBar />
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Hisobotlar" Style="{StaticResource PageTitle}" />
+                <Label Text="Davr bo'yicha saqlangan real ma'lumotlar" Style="{StaticResource SecondaryText}" />
+            </VerticalStackLayout>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="14">
+                <VerticalStackLayout Spacing="10">
+                    <Picker x:Name="PeriodPicker" Title="Davrni tanlang" SelectedIndexChanged="PeriodPicker_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Bugun</x:String><x:String>7 kun</x:String>
+                            <x:String>Bu oy</x:String><x:String>Bu yil</x:String><x:String>Maxsus</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <VerticalStackLayout x:Name="CustomRangeLayout" IsVisible="False" Spacing="8">
+                        <DatePicker x:Name="StartDatePicker" Format="dd.MM.yyyy" />
+                        <DatePicker x:Name="EndDatePicker" Format="dd.MM.yyyy" />
+                    </VerticalStackLayout>
+                    <Button Text="Hisobotni yangilash" Clicked="RefreshButton_Clicked" Style="{StaticResource PrimaryActionButton}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource GlassSurface}" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label x:Name="PeriodLabel" Text="Bugun" Style="{StaticResource SectionTitle}" />
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                        <VerticalStackLayout>
+                            <Label Text="Qayta ishlangan otlar" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="HorseCountLabel" Text="0" FontSize="22" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Tirik vazn" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="LiveWeightLabel" Text="0 kg" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Row="1">
+                            <Label Text="Real mahsulot" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="ProductionLabel" Text="0 kg" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                            <Label Text="Qayd etilgan xarajatlar" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="ExpensesLabel" Text="0 so'm" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Row="2">
+                            <Label Text="Ot xaridi qiymati" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="PurchaseCostLabel" Text="0 so'm" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                            <Label Text="Yozuvlar" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="SampleCountLabel" Text="0" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Row="3">
+                            <Label Text="O'rtacha tirik vazn" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="AverageWeightLabel" Text="Ma'lumot yetarli emas" FontSize="16" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Row="3" Grid.Column="1">
+                            <Label Text="O'rtacha real mahsulot" Style="{StaticResource SecondaryText}" />
+                            <Label x:Name="AverageProductionLabel" Text="Ma'lumot yetarli emas" FontSize="16" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Daromad va foyda" Style="{StaticResource SectionTitle}" />
+                    <Label Text="Sotuvlar bo'yicha alohida tranzaksiya ma'lumotlari hali mavjud emas. Shu sababli tushum, yalpi foyda va sof foyda hisoblanmaydi." Style="{StaticResource SecondaryText}" />
+                    <Label Text="Hisobotdagi ishlab chiqarish miqdorlari faqat saqlangan ProcessingResult yozuvlaridan olingan." Style="{StaticResource SecondaryText}" />
+                    <Button Text="Mahsulotlarni ko'rish" Clicked="ProductsButton_Clicked" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

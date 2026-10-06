@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="QaziCalculator.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:QaziCalculator"
+    xmlns:views="clr-namespace:QaziCalculator.Views"
+    Title="QaziCalculator"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light=#F2FFFFFF, Dark=#CC202127}"
+    Shell.TabBarForegroundColor="{AppThemeBinding Light=#8B1E2D, Dark=#F0AAB2}"
+    Shell.TabBarTitleColor="{AppThemeBinding Light=#8B1E2D, Dark=#F0AAB2}"
+    Shell.TabBarUnselectedColor="{AppThemeBinding Light=#6B7280, Dark=#8B8B94}">
+
+    <TabBar>
+        <ShellContent
+            Title="Bosh sahifa"
+            ContentTemplate="{DataTemplate views:DashboardPage}"
+            Route="DashboardPage" />
+        <ShellContent
+            Title="Yangi"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        <ShellContent
+            Title="Tarix"
+            ContentTemplate="{DataTemplate views:HistoryPage}"
+            Route="HistoryPage" />
+        <ShellContent
+            Title="Statistika"
+            ContentTemplate="{DataTemplate views:StatisticsPage}"
+            Route="StatisticsPage" />
+        <ShellContent
+            Title="Ko'proq"
+            ContentTemplate="{DataTemplate views:MorePage}"
+            Route="MorePage" />
+    </TabBar>
+
+</Shell>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QaziCalculator.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:QaziCalculator.Views"
+    Title="Sozlamalar"
+    Background="{AppThemeBinding Light={StaticResource PageBackgroundLightBrush}, Dark={StaticResource PageBackgroundDarkBrush}}"
+    xmlns:sh="clr-namespace:Sharpnado.MaterialFrame;assembly=Maui.MaterialFrame">
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="16">
+            <views:PageNavigationBar />
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Sozlamalar" Style="{StaticResource PageTitle}" />
+                <Label Text="Ko'rinish va ma'lumotlaringizni boshqaring" Style="{StaticResource SecondaryText}" />
+            </VerticalStackLayout>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Ko'rinish" Style="{StaticResource SectionTitle}" />
+                    <Label Text="Tizim rejimi qurilma mavzusiga amal qiladi." Style="{StaticResource SecondaryText}" />
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                        <Button
+                            x:Name="SystemThemeButton"
+                            Text="Tizim"
+                            CommandParameter="System"
+                            Clicked="ThemeModeButton_Clicked"
+                            CornerRadius="14"
+                            Padding="6,10" />
+                        <Button
+                            x:Name="LightThemeButton"
+                            Grid.Column="1"
+                            Text="Yorug'"
+                            CommandParameter="Light"
+                            Clicked="ThemeModeButton_Clicked"
+                            CornerRadius="14"
+                            Padding="6,10" />
+                        <Button
+                            x:Name="DarkThemeButton"
+                            Grid.Column="2"
+                            Text="Tungi"
+                            CommandParameter="Dark"
+                            Clicked="ThemeModeButton_Clicked"
+                            CornerRadius="14"
+                            Padding="6,10" />
+                    </Grid>
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Ma'lumotlar" Style="{StaticResource SectionTitle}" />
+                    <Label Text="Zaxira JSON formatida yaratiladi. Tiklash mavjud ma'lumotlarni o'chirmaydi; yozuvlarni qo'shadi." Style="{StaticResource SecondaryText}" />
+                    <Button Text="Zaxira nusxasini ulashish" Clicked="BackupButton_Clicked" />
+                    <Button Text="Zaxiradan qo'shib tiklash" Clicked="RestoreButton_Clicked" />
+                    <Label x:Name="DatabaseInfoLabel" Text="Ma'lumotlar bazasi ma'lumoti yuklanmoqda..." Style="{StaticResource SecondaryText}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Ilova haqida" Style="{StaticResource SectionTitle}" />
+                    <Label Text="QaziCalculator — offline ishlab chiqarish qaydlari va tahlil." Style="{StaticResource SecondaryText}" />
+                    <Label x:Name="VersionLabel" Text="Versiya" Style="{StaticResource SecondaryText}" />
+                    <Label Text="Til: O'zbekcha | O'lchov: kg" Style="{StaticResource SecondaryText}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Xavfli amal" FontSize="18" FontAttributes="Bold" TextColor="#8B1E2D" />
+                    <Label Text="Bu amal ushbu qurilmadagi barcha yozuvlarni butunlay o'chiradi. Avval zaxira yarating." Style="{StaticResource SecondaryText}" />
+                    <Button Text="Barcha ma'lumotlarni o'chirish" Clicked="DeleteAllButton_Clicked" BackgroundColor="#8B1E2D" TextColor="White" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

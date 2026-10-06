@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QaziCalculator.Views.HorseDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:QaziCalculator.Views"
+    Title="Ot ma'lumotlari"
+    Background="{AppThemeBinding Light={StaticResource PageBackgroundLightBrush}, Dark={StaticResource PageBackgroundDarkBrush}}"
+    xmlns:sh="clr-namespace:Sharpnado.MaterialFrame;assembly=Maui.MaterialFrame">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <views:PageNavigationBar />
+
+            <sh:MaterialFrame
+                Padding="20"
+                Style="{StaticResource GlassSurface}">
+
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        x:Name="HorseNameLabel"
+                        Text="Ot nomi"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+
+                    <Label
+                        x:Name="HorseDateLabel"
+                        Text="Sana"
+                        FontSize="14"
+                        TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+
+            <sh:MaterialFrame
+                Padding="16"
+                Style="{StaticResource GlassSurface}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Umumiy ma'lumotlar"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="Tirik vazn" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="LiveWeightLabel" Text="0 kg" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Xarid narxi / kg" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="PurchasePriceLabel" Text="0 so'm/kg" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="0" Grid.Row="1">
+                            <Label Text="Jami xarid qiymati" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="TotalCostLabel" Text="0 so'm" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Grid.Row="1">
+                            <Label Text="Jami o'lchangan" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="TotalMeasuredLabel" Text="0 kg" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="0" Grid.Row="2">
+                            <Label Text="Hisoblanmagan vazn" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="UnaccountedWeightLabel" Text="0 kg" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Grid.Row="2">
+                            <Label Text="Qazi" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="QaziStatusLabel" Text="Hali aniqlanmagan" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+
+            <sh:MaterialFrame
+                Padding="16"
+                Style="{StaticResource GlassSurface}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Real o'lchangan natijalar"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="Toza go'sht" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="CleanMeatLabel" Text="0 kg (0%)" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Yog'" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="FatLabel" Text="0 kg (0%)" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="0" Grid.Row="1">
+                            <Label Text="Suyak" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="BoneLabel" Text="0 kg (0%)" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Grid.Row="1">
+                            <Label Text="Pay" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="TendonLabel" Text="0 kg (0%)" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="0" Grid.Row="2">
+                            <Label Text="Kachalka" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="KachalkaLabel" Text="0 kg (0%)" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Grid.Row="2">
+                            <Label Text="Tarash" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="TarashLabel" Text="0 kg (0%)" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="0" Grid.Row="3">
+                            <Label Text="Chiqindi" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                            <Label x:Name="WasteLabel" Text="0 kg (0%)" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+
+            <sh:MaterialFrame
+                Padding="16"
+                Style="{StaticResource GlassSurface}">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="QaziComposition"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+
+                    <Label x:Name="QaziCompositionStatusLabel" Text="Hali aniqlanmagan" FontSize="14" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                    <Label x:Name="QaziCompositionDetailsLabel" Text="" FontSize="14" TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+
+            <sh:MaterialFrame
+                Padding="16"
+                Style="{StaticResource GlassSurface}">
+
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        Text="Izoh"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+
+                    <Label
+                        x:Name="NotesLabel"
+                        Text="-"
+                        FontSize="14"
+                        TextColor="{AppThemeBinding Light=#374151, Dark=#DDDDDD}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+
+            <sh:MaterialFrame
+                Padding="16"
+                Style="{StaticResource GlassSurface}">
+
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        Text="Qayta ishlash sanasi"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+
+                    <Label
+                        x:Name="ProcessingDateLabel"
+                        Text="-"
+                        FontSize="14"
+                        TextColor="{AppThemeBinding Light=#374151, Dark=#DDDDDD}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

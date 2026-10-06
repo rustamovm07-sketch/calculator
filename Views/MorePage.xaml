@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QaziCalculator.Views.MorePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:QaziCalculator.Views"
+    Title="Ko'proq"
+    Background="{AppThemeBinding Light={StaticResource PageBackgroundLightBrush}, Dark={StaticResource PageBackgroundDarkBrush}}">
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="14">
+            <views:PageNavigationBar />
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Boshqaruv" Style="{StaticResource PageTitle}" />
+                <Label Text="Ishlab chiqarish, ma'lumot va ilova sozlamalari" Style="{StaticResource SecondaryText}" />
+            </VerticalStackLayout>
+            <Button Text="Qazi tarkibi" Clicked="QaziButton_Clicked" />
+            <Button Text="Xarajatlar" Clicked="ExpensesButton_Clicked" />
+            <Button Text="Mahsulotlar" Clicked="ProductsButton_Clicked" />
+            <Button Text="Hisobotlar" Clicked="ReportsButton_Clicked" />
+            <Button Text="Sozlamalar va zaxira" Clicked="SettingsButton_Clicked" Style="{StaticResource PrimaryActionButton}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QaziCalculator.Views.ExpensesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:QaziCalculator.Views"
+    Title="Xarajatlar"
+    Background="{AppThemeBinding Light={StaticResource PageBackgroundLightBrush}, Dark={StaticResource PageBackgroundDarkBrush}}"
+    xmlns:sh="clr-namespace:Sharpnado.MaterialFrame;assembly=Maui.MaterialFrame">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <views:PageNavigationBar />
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Xarajatlar" Style="{StaticResource PageTitle}" />
+                <Label Text="Saqlangan xarajatlarni kuzating" Style="{StaticResource SecondaryText}" />
+            </VerticalStackLayout>
+            <sh:MaterialFrame Style="{StaticResource GlassSurface}" Padding="16">
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                    <VerticalStackLayout>
+                        <Label Text="Bugun" Style="{StaticResource SecondaryText}" />
+                        <Label x:Name="TodayTotalLabel" Text="0 so'm" FontAttributes="Bold" FontSize="16" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Bu oy" Style="{StaticResource SecondaryText}" />
+                        <Label x:Name="MonthTotalLabel" Text="0 so'm" FontAttributes="Bold" FontSize="16" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="2">
+                        <Label Text="Jami" Style="{StaticResource SecondaryText}" />
+                        <Label x:Name="AllTotalLabel" Text="0 so'm" FontAttributes="Bold" FontSize="16" />
+                    </VerticalStackLayout>
+                </Grid>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="9">
+                    <Label Text="Xarajat qaydi" Style="{StaticResource SectionTitle}" />
+                    <Picker x:Name="CategoryPicker" Title="Kategoriya">
+                        <Picker.Items>
+                            <x:String>Ot xaridi</x:String><x:String>Qayta ishlash</x:String>
+                            <x:String>Qadoqlash</x:String><x:String>Ziravor</x:String>
+                            <x:String>Ish haqi</x:String><x:String>Transport</x:String>
+                            <x:String>Elektr</x:String><x:String>Gaz</x:String><x:String>Boshqa</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Entry x:Name="NameEntry" Placeholder="Xarajat nomi" />
+                    <Entry x:Name="AmountEntry" Placeholder="Summa (so'm)" Keyboard="Numeric" />
+                    <Picker x:Name="HorsePicker" Title="Otga bog'lash (ixtiyoriy)" ItemDisplayBinding="{Binding Name}" />
+                    <Editor x:Name="NotesEditor" Placeholder="Izoh (ixtiyoriy)" AutoSize="TextChanges" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Text="Saqlash" Clicked="SaveButton_Clicked" Style="{StaticResource PrimaryActionButton}" />
+                        <Button Grid.Column="1" Text="Tozalash" Clicked="ClearButton_Clicked" />
+                    </Grid>
+                    <Label x:Name="SelectionLabel" Text="Tahrirlash uchun xarajatni tanlang." Style="{StaticResource SecondaryText}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Xarajatlar ro'yxati" Style="{StaticResource SectionTitle}" />
+                    <CollectionView x:Name="ExpensesCollection" SelectionMode="Single" SelectionChanged="ExpensesCollection_SelectionChanged" EmptyView="Xarajatlar hali yo'q.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <sh:MaterialFrame Padding="12" Margin="0,0,0,8" Style="{StaticResource GlassSurface}">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                            <Label Text="{Binding Category}" Style="{StaticResource SecondaryText}" />
+                                            <Label Text="{Binding CreatedAt, StringFormat='{0:dd.MM.yyyy}'}" FontSize="11" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="1" Text="{Binding Amount, StringFormat='{0:N0} UZS'}" FontAttributes="Bold" VerticalOptions="Center" />
+                                    </Grid>
+                                </sh:MaterialFrame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Button Text="Tanlangan xarajatni o'chirish" Clicked="DeleteButton_Clicked" BackgroundColor="{AppThemeBinding Light=#F3E7E9, Dark=#34191D}" TextColor="{AppThemeBinding Light=#8B1E2D, Dark=#F0AAB2}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

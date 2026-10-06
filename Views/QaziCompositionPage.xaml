@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QaziCalculator.Views.QaziCompositionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:QaziCalculator.Views"
+    Title="Qazi tarkibi"
+    Background="{AppThemeBinding Light={StaticResource PageBackgroundLightBrush}, Dark={StaticResource PageBackgroundDarkBrush}}"
+    xmlns:sh="clr-namespace:Sharpnado.MaterialFrame;assembly=Maui.MaterialFrame">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <views:PageNavigationBar />
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Qazi tarkibi" Style="{StaticResource PageTitle}" />
+                <Label Text="Faqat real o'lchangan qazi tarkibini saqlang" Style="{StaticResource SecondaryText}" />
+            </VerticalStackLayout>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Yangi kuzatuv" Style="{StaticResource SectionTitle}" />
+                    <Picker x:Name="HorsePicker" Title="Bog'langan otni tanlang" ItemDisplayBinding="{Binding Name}" />
+                    <Entry x:Name="TotalQaziEntry" Placeholder="Jami qazi (kg)" Keyboard="Numeric" />
+                    <Entry x:Name="MeatEntry" Placeholder="Go'sht (kg)" Keyboard="Numeric" />
+                    <Entry x:Name="FatEntry" Placeholder="Yog' (kg)" Keyboard="Numeric" />
+                    <Editor x:Name="NotesEditor" Placeholder="Izoh (ixtiyoriy)" AutoSize="TextChanges" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Text="Saqlash" Clicked="SaveButton_Clicked" Style="{StaticResource PrimaryActionButton}" />
+                        <Button Grid.Column="1" Text="Tozalash" Clicked="ClearButton_Clicked" />
+                    </Grid>
+                    <Label x:Name="SelectionLabel" Text="Ro'yxatdan yozuv tanlab tahrirlang yoki o'chiring." Style="{StaticResource SecondaryText}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Haqiqiy qazi kuzatuvlari" Style="{StaticResource SectionTitle}" />
+                    <CollectionView x:Name="CompositionCollection" SelectionMode="Single" SelectionChanged="CompositionCollection_SelectionChanged" EmptyView="Qazi tarkibi hali qayd etilmagan.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <sh:MaterialFrame Padding="12" Margin="0,0,0,8" Style="{StaticResource GlassSurface}">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="{Binding TotalQaziKg, StringFormat='{0:N2} kg qazi'}" FontAttributes="Bold" />
+                                            <Label Text="{Binding CreatedAt, StringFormat='{0:dd.MM.yyyy}'}" Style="{StaticResource SecondaryText}" />
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="3" HorizontalOptions="End">
+                                            <Label Text="{Binding MeatKg, StringFormat='Go''sht: {0:N2} kg'}" FontSize="12" />
+                                            <Label Text="{Binding FatKg, StringFormat='Yog'': {0:N2} kg'}" FontSize="12" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </sh:MaterialFrame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Button Text="Tanlangan yozuvni o'chirish" Clicked="DeleteButton_Clicked" BackgroundColor="{AppThemeBinding Light=#F3E7E9, Dark=#34191D}" TextColor="{AppThemeBinding Light=#8B1E2D, Dark=#F0AAB2}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+            <sh:MaterialFrame Style="{StaticResource GlassSurface}" Padding="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Tarkib modeli — real tarixdan" Style="{StaticResource SectionTitle}" />
+                    <Entry x:Name="TargetQaziEntry" Placeholder="Tahlil qilinadigan qazi (kg)" Keyboard="Numeric" />
+                    <Button Text="Tarixiy tarkib prognozi" Clicked="PredictButton_Clicked" />
+                    <Label x:Name="PredictionLabel" Text="Prognoz uchun ma'lumot yetarli emas." Style="{StaticResource SecondaryText}" />
+                </VerticalStackLayout>
+            </sh:MaterialFrame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
