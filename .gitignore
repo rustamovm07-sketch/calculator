@@ -15,6 +15,7 @@ obj/
 
 # IDE and local workspace state
 .vs/
+.vscode/
 .qodo/
 *.user
 *.suo
@@ -22,6 +23,7 @@ obj/
 # Generated Android packages
 *.apk
 *.aab
+!downloads/QaziCalculator-debug.apk
 
 # OS-generated files
 .DS_Store
