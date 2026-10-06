@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:QaziCalculator"
     xmlns:views="clr-namespace:QaziCalculator.Views"
-    Title="QaziCalculator"
+    Title="Adenalin Calculator"
     Shell.TabBarBackgroundColor="{AppThemeBinding Light=#F2FFFFFF, Dark=#CC202127}"
     Shell.TabBarForegroundColor="{AppThemeBinding Light=#8B1E2D, Dark=#F0AAB2}"
     Shell.TabBarTitleColor="{AppThemeBinding Light=#8B1E2D, Dark=#F0AAB2}"

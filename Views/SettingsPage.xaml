@@ -57,7 +57,7 @@
             <sh:MaterialFrame Style="{StaticResource AppCard}" Padding="16">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Ilova haqida" Style="{StaticResource SectionTitle}" />
-                    <Label Text="QaziCalculator — offline ishlab chiqarish qaydlari va tahlil." Style="{StaticResource SecondaryText}" />
+                    <Label Text="Adenalin Calculator — offline ishlab chiqarish qaydlari va tahlil." Style="{StaticResource SecondaryText}" />
                     <Label x:Name="VersionLabel" Text="Versiya" Style="{StaticResource SecondaryText}" />
                     <Label Text="Til: O'zbekcha | O'lchov: kg" Style="{StaticResource SecondaryText}" />
                 </VerticalStackLayout>

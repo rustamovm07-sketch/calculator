@@ -62,7 +62,7 @@ public partial class SettingsPage : ContentPage
             var path = await _backupService.CreateBackupAsync();
             await Share.Default.RequestAsync(new ShareFileRequest
             {
-                Title = "QaziCalculator zaxirasi",
+                Title = "Adenalin Calculator zaxirasi",
                 File = new ShareFile(path)
             });
         }
@@ -87,7 +87,7 @@ public partial class SettingsPage : ContentPage
         {
             var file = await FilePicker.Default.PickAsync(new PickOptions
             {
-                PickerTitle = "QaziCalculator JSON zaxirasini tanlang"
+                PickerTitle = "Adenalin Calculator JSON zaxirasini tanlang"
             });
             if (file is null)
                 return;
