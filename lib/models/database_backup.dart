@@ -58,10 +58,13 @@ class DatabaseBackup {
     if (value('formatVersion') != 1 || value('backupId') is! String) {
       throw const FormatException('Unsupported backup format.');
     }
+    final exportedAt = DateTime.tryParse('${value('exportedAt') ?? ''}');
+    if (exportedAt == null) {
+      throw const FormatException('Backup export date is invalid.');
+    }
     return DatabaseBackup(
       backupId: value('backupId')! as String,
-      exportedAt:
-          DateTime.tryParse('${value('exportedAt') ?? ''}') ?? DateTime.now(),
+      exportedAt: exportedAt,
       horseBatches: list('horseBatches', HorseBatch.fromMap),
       processingResults: list('processingResults', ProcessingResult.fromMap),
       qaziCompositions: list('qaziCompositions', QaziComposition.fromMap),

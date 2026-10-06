@@ -99,4 +99,20 @@ void main() {
       throwsFormatException,
     );
   });
+
+  test('rejects a missing or invalid backup export date', () {
+    expect(
+      () => DatabaseBackup.fromMap({
+        'formatVersion': 1,
+        'backupId': '0123456789abcdef0123456789abcdef',
+        'exportedAt': 'not-a-date',
+        'horseBatches': [],
+        'processingResults': [],
+        'qaziCompositions': [],
+        'expenses': [],
+        'products': [],
+      }),
+      throwsFormatException,
+    );
+  });
 }

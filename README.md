@@ -60,7 +60,7 @@ The first run may ask you to accept the Android SDK licenses or authorize the co
 
 [Download Adenalin Calculator for Android](downloads/AdenalinCalculator-release.apk)
 
-The APK is built for ARM64 Android phones and signed with the Flutter debug key for installation and testing. It is not signed for Google Play publishing.
+The current APK is version 1.0.1, built for ARM64 Android phones and signed with the Flutter debug key for installation and testing. It is not signed for Google Play publishing.
 
 Build a debug APK:
 
