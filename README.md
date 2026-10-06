@@ -12,6 +12,6 @@ To install it, download the file on your Android device, open it, and allow inst
 
 ## Windows desktop app
 
-[Download Adenalin Calculator for Windows (x64)](downloads/AdenalinCalculator-Windows-x64.zip)
+[Download Adenalin Calculator for Windows (x64)](https://media.githubusercontent.com/media/rustamovm07-sketch/calculator/main/downloads/AdenalinCalculator-Windows-x64.zip)
 
 Extract the ZIP and run `QaziCalculator.exe`. This self-contained app supports 64-bit Windows 10 version 1809 (build 17763) and later; no separate .NET runtime installation is required.
