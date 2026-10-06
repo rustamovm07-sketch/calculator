@@ -28,13 +28,15 @@ class HorseDetailPage extends StatelessWidget {
             child: LayoutBuilder(
               builder: (context, constraints) {
                 final columns = constraints.maxWidth > 540 ? 3 : 2;
+                final tileWidth =
+                    (constraints.maxWidth - (columns - 1) * 10) / columns;
                 return GridView.count(
                   crossAxisCount: columns,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  childAspectRatio: columns == 2 ? 1.6 : 1.8,
+                  mainAxisExtent: tileWidth < 220 ? 76 : 128,
                   children: [
                     MetricTile(
                       label: 'Tirik vazn',

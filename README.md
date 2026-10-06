@@ -12,6 +12,12 @@ Offline-first Flutter application for recording horse-processing results, review
 - Qazi composition records and historical composition analysis. Qazi quantity is never guessed or counted as a measured yield.
 - Expense tracking by category and optional horse, and product/stock management.
 - Offline SQLite storage, JSON backup/restore, and System/Light/Dark appearance settings.
+- Everyday calculator with a safe arithmetic parser, percentages, parentheses, repeated equals, and saved/reusable calculation history.
+- Nine accent palettes plus a custom color, with contrast-aware Material 3 themes.
+- Classic, 3D, Liquid Glass, and 3D Liquid Glass appearances with adjustable glass effects.
+- Branded animated Flutter startup screen and Android 12+ native splash using the existing Adenalin artwork.
+
+Open **Boshqaruv → Oddiy kalkulyator** or use the dashboard quick action to reach the everyday calculator. Choose **Tizim / Yorug‘ / Tungi**, a palette, and one of the four interface styles under **Sozlamalar va zaxira**. Liquid Glass sliders preview immediately and save their values when released.
 
 ## Installation
 
@@ -28,7 +34,7 @@ From the repository root:
 flutter pub get
 ```
 
-Flutter 3.47.6 and Dart 3.13.5 were used to validate this project. The Android application ID is `uz.adrenalin.qazi.calculator`; the minimum Android SDK is Flutter's supported Android minimum (API 24 or newer), and Flutter's default APK build includes ARM64.
+Flutter 3.47.6 and Dart 3.13.5 were used to validate this project. The app is version 1.1.0 (build 3). Its Android application ID is `uz.adrenalin.qazi.calculator`; the minimum Android SDK is API 24, and APK builds include ARM64.
 
 ## VS Code setup
 
@@ -58,9 +64,9 @@ The first run may ask you to accept the Android SDK licenses or authorize the co
 
 ### Download the ready-to-install APK
 
-[Download Adenalin Calculator for Android](downloads/AdenalinCalculator-release.apk)
+[Download Adenalin Calculator for Android](https://github.com/rustamovm07-sketch/calculator/raw/refs/heads/main/downloads/AdenalinCalculator-release.apk)
 
-The current APK is version 1.0.1, built for ARM64 Android phones and signed with the Flutter debug key for installation and testing. It is not signed for Google Play publishing.
+The current APK is version 1.1.0, built for ARM64 Android phones and signed with the Flutter debug key for installation and testing. It is not signed for Google Play publishing.
 
 Build a debug APK:
 
@@ -107,7 +113,7 @@ lib/
   core/services/        SQLite persistence and JSON backup handling
   features/
     analytics/          Date-range statistics and reports
-    calculator/         Calculation and historical prediction logic/UI
+    calculator/         Horse-processing and everyday calculator logic/UI
     horses/             Dashboard, history, and horse details
     management/         Expenses and product inventory
     qazi/               Observed qazi composition and analysis
@@ -116,7 +122,7 @@ lib/
   widgets/              Shared cards, metrics, and date-range controls
 assets/images/           Existing Adenalin Qazi brand icon
 android/                 Native Flutter Android/Gradle project
-test/                    Calculation and prediction tests
+test/                    Calculation, preference, startup, and responsive UI tests
 .vscode/                 VS Code launch and editor settings
 ```
 

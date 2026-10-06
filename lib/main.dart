@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,6 +10,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final preferences = await SharedPreferences.getInstance();
   final state = AppState(preferences);
-  await state.initialize();
   runApp(AdenalinCalculatorApp(state: state));
+  unawaited(state.initialize());
 }

@@ -146,13 +146,15 @@ class _ExpensesPageState extends State<ExpensesPage> {
           LayoutBuilder(
             builder: (context, constraints) {
               final columns = constraints.maxWidth > 540 ? 3 : 1;
+              final tileWidth =
+                  (constraints.maxWidth - (columns - 1) * 10) / columns;
               return GridView.count(
                 crossAxisCount: columns,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                childAspectRatio: columns == 1 ? 5 : 1.5,
+                mainAxisExtent: tileWidth < 220 ? 76 : 128,
                 children: [
                   MetricTile(
                     label: 'Bugun',

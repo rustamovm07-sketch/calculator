@@ -4,6 +4,7 @@ import '../../../widgets/app_components.dart';
 import '../../analytics/reports_page.dart';
 import '../../management/expenses_page.dart';
 import '../../management/products_page.dart';
+import '../../calculator/presentation/everyday_calculator_page.dart';
 import '../../qazi/presentation/qazi_composition_page.dart';
 import 'settings_page.dart';
 
@@ -15,6 +16,16 @@ class MorePage extends StatelessWidget {
         title: 'Boshqaruv',
         subtitle: 'Qazi, xarajatlar, zaxira va sozlamalar',
         children: [
+          SectionCard(
+            title: 'Kundalik hisob-kitob',
+            child: _NavigationTile(
+              icon: Icons.calculate_outlined,
+              title: 'Oddiy kalkulyator',
+              subtitle: 'Amallar va oldingi hisoblar tarixi',
+              page: const EverydayCalculatorPage(),
+            ),
+          ),
+          const SizedBox(height: 14),
           SectionCard(
             title: 'Ishlab chiqarish',
             child: Column(

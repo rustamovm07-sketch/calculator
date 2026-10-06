@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../app/app_state.dart';
+import '../../../core/constants/app_metadata.dart';
 import '../../../core/services/backup_service.dart';
 import '../../../widgets/app_components.dart';
+import 'appearance_settings_section.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -14,6 +16,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   (int, int, int, int, int)? _counts;
   int? _databaseSize;
+  int? _precision;
   bool _busy = false;
 
   Future<void> _loadInfo() async {
@@ -132,9 +135,23 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
+  Future<void> _clearCalculatorHistory() async {
+    final state = AppScope.of(context);
+    if (!await confirmAction(
+      context,
+      title: 'Hisoblar tarixini tozalash',
+      message: 'Oddiy kalkulyatorning saqlangan natijalari o‘chirilsinmi?',
+    )) {
+      return;
+    }
+    await state.clearCalculatorHistory();
+    if (mounted) showMessage(context, 'Hisoblar tarixi tozalandi.');
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _precision ??= AppScope.of(context).calculatorPrecision;
     if (_counts == null) {
       _loadInfo();
     }
@@ -149,8 +166,10 @@ class _SettingsPageState extends State<SettingsPage> {
         title: 'Sozlamalar',
         subtitle: 'Ko‘rinish va ma’lumotlaringizni boshqaring',
         children: [
+          const AppearanceSettingsSection(),
+          const SizedBox(height: 14),
           SectionCard(
-            title: 'Ko‘rinish',
+            title: 'Mavzu',
             child: Column(
               children: [
                 const Align(
@@ -179,6 +198,51 @@ class _SettingsPageState extends State<SettingsPage> {
                   selected: {state.themeMode},
                   onSelectionChanged:
                       _busy ? null : (value) => state.setTheme(value.first),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 14),
+          SectionCard(
+            title: 'Oddiy kalkulyator',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Natijadagi kasr xonalari: ${_precision ?? state.calculatorPrecision}',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                Slider(
+                  value: (_precision ?? state.calculatorPrecision).toDouble(),
+                  min: 0,
+                  max: 12,
+                  divisions: 12,
+                  label: '${_precision ?? state.calculatorPrecision}',
+                  onChanged: _busy
+                      ? null
+                      : (value) => setState(() => _precision = value.round()),
+                  onChangeEnd: _busy
+                      ? null
+                      : (value) => state.setCalculatorPrecision(value.round()),
+                ),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text('Tugmalarda tebranish'),
+                  subtitle: const Text('Hisoblash tugmalariga yengil javob'),
+                  value: state.hapticFeedback,
+                  onChanged: _busy ? null : state.setHapticFeedback,
+                ),
+                const Divider(),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text('Hisoblar tarixi'),
+                  subtitle: Text('${state.calculatorHistory.length} ta natija'),
+                  trailing: TextButton(
+                    onPressed: _busy || state.calculatorHistory.isEmpty
+                        ? null
+                        : _clearCalculatorHistory,
+                    child: const Text('Tozalash'),
+                  ),
                 ),
               ],
             ),
@@ -216,10 +280,20 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           const SizedBox(height: 14),
-          const SectionCard(
+          SectionCard(
             title: 'Ilova haqida',
-            child: Text(
-              'Adenalin Calculator · offline ishlab chiqarish qaydlari va tahlil · O‘zbekcha · kg',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Adenalin Calculator · offline ishlab chiqarish qaydlari va tahlil · O‘zbekcha · kg',
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Versiya ${AppMetadata.version} · Build ${AppMetadata.buildNumber}',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 14),
