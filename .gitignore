@@ -1,32 +1,22 @@
-# Build outputs
-bin/
-obj/
-
-# User-specific files
-.vs/
-*.user
-*.suo
-
-# OS-generated files
-.DS_Store
-# Build outputs
-bin/
-obj/
-
-# IDE and local workspace state
-.vs/
-.vscode/
-.qodo/
-*.user
-*.suo
-
-# Generated Android packages
-*.apk
-*.aab
-*.zip
-!downloads/QaziCalculator-debug.apk
-!downloads/AdenalinCalculator-Windows-x64.zip
-
-# OS-generated files
+/build/
+/bin/
+/obj/
+/android/.gradle/
+/android/local.properties
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+/.dart_tool/
+/.flutter-plugins
+/.flutter-plugins-dependencies
+/.packages
+/coverage/
+*.iml
+.idea/
 .DS_Store
 Thumbs.db
+*.user
+*.suo
+*.apk
+!/downloads/AdenalinCalculator-release.apk
+*.aab

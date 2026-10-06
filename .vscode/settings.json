@@ -1,0 +1,12 @@
+{
+  "git.ignoreLimitWarning": true,
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnSave": true
+  },
+  "dart.previewFlutterUiGuides": true,
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/build": true
+  }
+}
